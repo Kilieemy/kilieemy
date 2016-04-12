@@ -286,6 +286,16 @@ a:hover {
   color: #ffc0cb;
   border-bottom-color: #ffc0cb;
 }
+p a {
+  color: #5ba4e5;
+  text-decoration: none;
+  border-bottom: 0 solid #999;
+  word-wrap: break-word;
+}
+p a:hover {
+  color: #ffc0cb;
+  border-bottom-color: #ffc0cb;
+}
 ul {
   list-style: none;
 }
@@ -1516,7 +1526,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f91f52;
+  background: #949533;
 }
 .links-of-blogroll {
   font-size: 13px;
