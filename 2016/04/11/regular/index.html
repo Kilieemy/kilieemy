@@ -1,0 +1,827 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/kilieemy/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/kilieemy/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/kilieemy/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="正则,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/kilieemy/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="verbal-expressions是github上一个开源的JS正则库，旨在用简单的使用方法构建复杂的JS正则表达式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS正则使用  verbal-expressions手册">
+<meta property="og:url" content="http://kilieemy.github.io/kilieemy/2016/04/11/regular/index.html">
+<meta property="og:site_name" content="Kilieemy">
+<meta property="og:description" content="verbal-expressions是github上一个开源的JS正则库，旨在用简单的使用方法构建复杂的JS正则表达式。">
+<meta property="og:updated_time" content="2016-04-12T11:44:17.119Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS正则使用  verbal-expressions手册">
+<meta name="twitter:description" content="verbal-expressions是github上一个开源的JS正则库，旨在用简单的使用方法构建复杂的JS正则表达式。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JS正则使用  verbal-expressions手册 | Kilieemy </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/kilieemy/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kilieemy</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/kilieemy/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/kilieemy/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/kilieemy/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/kilieemy/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/kilieemy/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/kilieemy/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS正则使用  verbal-expressions手册
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-11T16:22:02+08:00" content="2016-04-11">
+              2016-04-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/kilieemy/2016/04/11/regular/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/regular/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://github.com/VerbalExpressions/JSVerbalExpressions" target="_blank" rel="external">verbal-expressions</a>是github上一个开源的JS正则库，旨在用简单的使用方法构建复杂的JS正则表达式。<br><a id="more"></a></p>
+<blockquote>
+<ul>
+<li>VerbalExpressions is a JavaScript library that helps to construct difficult regular expressions.</li>
+</ul>
+</blockquote>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="110" src="http://music.163.com/outchain/player?type=0&id=169716114&auto=1&height=90"></iframe>
+
+<h2 id="一、使用方法"><a href="#一、使用方法" class="headerlink" title="一、使用方法"></a>一、使用方法</h2><h3 id="使用CDN"><a href="#使用CDN" class="headerlink" title="使用CDN"></a>使用CDN</h3><p>在网页的html文件中添加<code>script</code>标签<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/jsverbalexpressions/0.2.1/verbalexpressions.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="通过npm安装"><a href="#通过npm安装" class="headerlink" title="通过npm安装"></a>通过npm安装</h3><p>Install：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install verbal-expressions --save</span><br></pre></td></tr></table></figure></p>
+<p>Require：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> VerEx = <span class="built_in">require</span>(<span class="string">'verbal-expressions'</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、使用实例"><a href="#二、使用实例" class="headerlink" title="二、使用实例"></a>二、使用实例</h2><p>通过上面两种方法引入<a href="https://github.com/VerbalExpressions/JSVerbalExpressions/blob/master/VerbalExpressions.js" target="_blank" rel="external">VerbalExpressions.js</a>之后，即可直接VerEx方法构建正则实例。在这儿给出几个实例演示verbal-expressions如何使用。</p>
+<h3 id="检测url是否正确"><a href="#检测url是否正确" class="headerlink" title="检测url是否正确"></a>检测url是否正确</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个实例检测网址是否正确</span></span><br><span class="line"><span class="keyword">var</span> tester = VerEx()</span><br><span class="line">    .startOfLine()</span><br><span class="line">    .then(<span class="string">'http'</span>)</span><br><span class="line">    .maybe(<span class="string">'s'</span>)</span><br><span class="line">    .then(<span class="string">'://'</span>)</span><br><span class="line">    .maybe(<span class="string">'www.'</span>)</span><br><span class="line">    .anythingBut(<span class="string">' '</span>)</span><br><span class="line">    .endOfLine();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> testMe = <span class="string">'https://www.google.com'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用正则对象RegExp的原生test()方法</span></span><br><span class="line"><span class="keyword">if</span> (tester.test(testMe)) &#123;</span><br><span class="line">    alert(<span class="string">'We have a correct URL '</span>); <span class="comment">// 检测匹配成功，输出</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="string">'The URL is incorrect'</span>); <span class="comment">// 检测匹配失败，输出</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(tester); <span class="comment">// console输出tester的正则表达式: /^(http)(s)?(\:\/\/)(www\.)?([^\ ]*)$/</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串替换"><a href="#字符串替换" class="headerlink" title="字符串替换"></a>字符串替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 待替换字符串</span></span><br><span class="line"><span class="keyword">var</span> replaceMe = <span class="string">'Replace bird with a duck'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建匹配"bird"字符的正则对象</span></span><br><span class="line"><span class="keyword">var</span> expression = VerEx().find(<span class="string">'bird'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 像使用原生正则对象一样</span></span><br><span class="line"><span class="keyword">var</span> result = expression.replace(replaceMe, <span class="string">'duck'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出 "Replace duck with a duck"</span></span><br><span class="line">alert(result);</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然也能用下面这种更精炼的写法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = VerEx().find(<span class="string">'red'</span>).replace(<span class="string">'We have a red house'</span>, <span class="string">'blue'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出 "We have a blue house"</span></span><br><span class="line">alert(result);</span><br></pre></td></tr></table></figure></p>
+<p>从这两个实例可以看出，<a href="https://github.com/VerbalExpressions/JSVerbalExpressions" target="_blank" rel="external">verbal-expressions</a>旨在用更易读写的方法构建正则对象，采用<strong>函数链</strong>的方式实现了一转口语化的表达式，使原本晦涩难懂的正则表达式具有极强的可读性和复用性。</p>
+<h2 id="三、API及源码分析"><a href="#三、API及源码分析" class="headerlink" title="三、API及源码分析"></a>三、API及源码分析</h2><h3 id="新建一个正则对象"><a href="#新建一个正则对象" class="headerlink" title="新建一个正则对象"></a>新建一个正则对象</h3><p>通过调用VerEx()方法获得一个正则对象，这个对象类似于JS原生的正则对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myExpression = VerEx();</span><br><span class="line"><span class="built_in">console</span>.log(myExpression); <span class="comment">//输出"/(?:)/"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> testMe = <span class="keyword">new</span> <span class="built_in">RegExp</span>();</span><br><span class="line"><span class="built_in">console</span>.log(testMe); <span class="comment">//输出"/(?:)/"</span></span><br></pre></td></tr></table></figure></p>
+<p>通过阅读源码可以看出VerEx()构造正则对象方法就是JS原生的 <code>var myExp = new RegExp();</code> 只是为其绑定了若干内部方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> method;</span><br><span class="line"><span class="comment">// 遍历所有的对象方法</span></span><br><span class="line"><span class="keyword">for</span> (method <span class="keyword">in</span> VerbalExpression.prototype) &#123;</span><br><span class="line">    <span class="keyword">if</span> (VerbalExpression.prototype.hasOwnProperty(method)) &#123;</span><br><span class="line">        <span class="comment">// 添加方法</span></span><br><span class="line">        verbalExpression[method] = VerbalExpression.prototype[method];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> verbalExpression;</span><br></pre></td></tr></table></figure></p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><h4 id="add"><a href="#add" class="headerlink" title=".add()"></a>.add()</h4><p>为正则表达式添加匹配规则，并更新正则对象；</p>
+<table>
+<thead>
+<tr>
+<th>Parameter参数</th>
+<th>Description描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>String</em> expression（可选）</td>
+<td>需要添加的匹配规则，以字符串形式表示</td>
+</tr>
+</tbody>
+</table>
+<p>例：把所有的 <code>Line</code> 替换成 <code>Newline</code> ；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testMe = <span class="string">"Line 1\nLine 2"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myExpression = VerEx().add(<span class="string">"Line"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myExpression);<span class="comment">//输出"/Line/gm"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = myExpression.replace(testMe, <span class="string">"Newline: "</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);<span class="comment">//"Newline: 1\n"</span></span><br><span class="line">                    <span class="comment">//"Newline: 2"</span></span><br></pre></td></tr></table></figure></p>
+<p>使用.add()构造方法均会默认添加 全局匹配 <code>i</code> 和 多行匹配 <code>m</code> ， 这一点可以通过源码得到验证；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">_prefixes: <span class="string">''</span>, <span class="comment">//行首匹配</span></span><br><span class="line">_source: <span class="string">''</span>, <span class="comment">//具体匹配规则</span></span><br><span class="line">_suffixes: <span class="string">''</span>, <span class="comment">//行尾匹配</span></span><br><span class="line">_modifiers: <span class="string">'gm'</span>, <span class="comment">//默认全局匹配 `i` 和 多行匹配 `m` </span></span><br><span class="line"></span><br><span class="line">add: <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>._source += value || <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">this</span>.compile(<span class="keyword">this</span>._prefixes + <span class="keyword">this</span>._source + <span class="keyword">this</span>._suffixes, <span class="keyword">this</span>._modifiers);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所有的匹配规则均由 <code>_prefixes</code>、<code>_source</code>、<code>_suffixes</code>、<code>_modifiers</code> 这四个字段依次连接组成； <code>_prefixes</code> 和 <code>_suffixes</code> 分别对应行首和行尾的匹配，而具体的中间匹配规则则由 <code>_source</code> 完成， <code>_modifiers</code> 则添加attributes属性（更多正则attributes属性说明参考<a href="http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp" target="_blank" rel="external">W3School</a>）。<br>可以看到，使用.add()添加的匹配规则添加在 <code>_source</code> 字段之后。<br>值得注意的是，其他大多数构造方法都有直接或间接地调用.add()方法，特别需要注意的是<a class="withinPageJump" href="#then">.then()</a>方法，它的实现其实是在调用.add()之前做一遍参数字段的预处理（安全调用，对使用者更友好），因此建议使用.then()方法完成正则表达式构建。</p>
+<h4 id="startOfLine"><a href="#startOfLine" class="headerlink" title=".startOfLine()"></a>.startOfLine()</h4><p>行首匹配，添加这个方法表示从行首开始匹配；</p>
+<table>
+<thead>
+<tr>
+<th>Parameter参数</th>
+<th>Description描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Boolean</em> enable（可选）</td>
+<td>是否使用行首匹配，缺省、默认值：true</td>
+</tr>
+</tbody>
+</table>
+<p>例1：在行首添加指定字符<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testMe = <span class="string">"Line 1\nLine 2"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myExpression = VerEx().startOfLine();</span><br><span class="line"><span class="built_in">console</span>.log(myExpression); <span class="comment">//输出"/^/gm"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result1 = myExpression.replace(testMe, <span class="string">"Newline: "</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result1); <span class="comment">//"Newline: Line 1\n"</span></span><br><span class="line">                      <span class="comment">//"Newline: Line 2"</span></span><br></pre></td></tr></table></figure></p>
+<p>例2：在行首添加行号<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testMe = <span class="string">"Line 1\nLine 2"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myExpression = VerEx().startOfLine();</span><br><span class="line"><span class="built_in">console</span>.log(myExpression); <span class="comment">//输出"/^/gm"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lineNumber = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> result2 = myExpression.replace(testMe, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> lineNumber++ + <span class="string">". "</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(result2);<span class="comment">//"1. Line 1\n"</span></span><br><span class="line">                     <span class="comment">//"2. Line 2"</span></span><br></pre></td></tr></table></figure></p>
+<p>例3：作为Verbal Expression链的一部分使用，此例只替换出现在行首的特定字符<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testMe = <span class="string">"Line string\nAnother Line string"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myExpression = VerEx().startOfLine().then(<span class="string">"Line"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myExpression); <span class="comment">//输出"/^(?:Line)/gm"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result3 = myExpression.replace(testMe, <span class="string">"Newline"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result3); <span class="comment">//"Newline string\n"</span></span><br><span class="line">                      <span class="comment">//"Another Line string"</span></span><br></pre></td></tr></table></figure></p>
+<p>例4：.startOfLine(enable)，此例通过和例3的对比清楚地看出enable为false时的区别<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testMe = <span class="string">"Line string\nAnother Line string"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myExpression1 = VerEx().startOfLine().then(<span class="string">"Line"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myExpression1); <span class="comment">//输出"/^(?:Line)/gm"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result4 = myExpression1.replace(testMe, <span class="string">"Newline"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result4); <span class="comment">//"Newline string\n"</span></span><br><span class="line">                      <span class="comment">//"Another Line string"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myExpression2 = VerEx().startOfLine(<span class="literal">false</span>).then(<span class="string">"Line"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myExpression2); <span class="comment">//输出"/(?:Line)/gm"</span></span><br><span class="line"><span class="keyword">var</span> result5 = myExpression2.replace(testMe, <span class="string">"Newline"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result5); <span class="comment">//"Newline string\n"</span></span><br><span class="line">                      <span class="comment">//"Another Newline string"</span></span><br><span class="line">                      </span><br><span class="line"><span class="comment">//可以看到，在生成的正则表达式中，enable为false是少了 `^` 行首定位符，</span></span><br><span class="line"><span class="comment">//所以第二行不是行首的 `Line` 也被替换成了 `Newline` 。</span></span><br></pre></td></tr></table></figure></p>
+<p>源码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">startOfLine: <span class="function"><span class="keyword">function</span> <span class="title">startOfLine</span>(<span class="params">enable</span>) </span>&#123;</span><br><span class="line">    enable = (enable !== <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">this</span>._prefixes = enable ? <span class="string">'^'</span> : <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">this</span>.add();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从源码中可以清楚地看到.startOfLine()的使用原理：enable为true时为匹配规则添加行首定位符 <code>^</code> 。</p>
+<h4 id="endOfLine"><a href="#endOfLine" class="headerlink" title=".endOfLine()"></a>.endOfLine()</h4><p>行尾匹配，使用这个方法表示为正则表达式添加行尾匹配；</p>
+<table>
+<thead>
+<tr>
+<th>Parameter参数</th>
+<th>Description描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Boolean</em> enable（可选）</td>
+<td>是否使用行尾匹配，缺省、默认值：true</td>
+</tr>
+</tbody>
+</table>
+<p>例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testMe = <span class="string">"Line string\nLine string No.2"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myExpression1 = VerEx().endOfLine().then(<span class="string">"string"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myExpression1); <span class="comment">//输出"/(?:string)$/gm"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result1 = myExpression1.replace(testMe, <span class="string">"NewString"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result1); <span class="comment">//"Line NewString\n"</span></span><br><span class="line">                      <span class="comment">//"Line string No.2"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myExpression2 = VerEx().endOfLine(<span class="literal">false</span>).then(<span class="string">"string"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myExpression2); <span class="comment">//输出"/(?:string)/gm"</span></span><br><span class="line"><span class="keyword">var</span> result2 = myExpression2.replace(testMe, <span class="string">"NewString"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result2); <span class="comment">//"Line NewString\n"</span></span><br><span class="line">                      <span class="comment">//"Line NewString No.2"</span></span><br><span class="line">                      </span><br><span class="line"><span class="comment">//类似于.startOfLine()，.endOfLine()能够在行尾添加匹配，实现类似的在行尾添加或替换特定字符，</span></span><br><span class="line"><span class="comment">//enable为false时则相应地取消了 `$` 行尾定位符；</span></span><br></pre></td></tr></table></figure></p>
+<p>源码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">endOfLine: <span class="function"><span class="keyword">function</span> <span class="title">endOfLine</span>(<span class="params">enable</span>) </span>&#123;</span><br><span class="line">    enable = (enable !== <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">this</span>._suffixes = enable ? <span class="string">'$'</span> : <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">this</span>.add();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="then"><a href="#then" class="headerlink" title=".then()"></a>.then()</h4><table>
+<thead>
+<tr>
+<th>Parameter参数</th>
+<th>Description描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>String</em> value</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/kilieemy/tags/正则/" rel="tag">#正则</a>
+          
+            <a href="/kilieemy/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/kilieemy/2016/03/19/mdTest/" rel="next" title="markdown test">
+                <i class="fa fa-chevron-left"></i> markdown test
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/11/regular/"
+           data-title="JS正则使用  verbal-expressions手册" data-url="http://kilieemy.github.io/kilieemy/kilieemy/2016/04/11/regular/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/kilieemy/upload/head.jpg"
+               alt="Kilieemy" />
+          <p class="site-author-name" itemprop="name">Kilieemy</p>
+          <p class="site-description motion-element" itemprop="description">Kilieemy's Blog.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/kilieemy/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/kilieemy/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/kilieemy/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、使用方法"><span class="nav-number">1.</span> <span class="nav-text">一、使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用CDN"><span class="nav-number">1.1.</span> <span class="nav-text">使用CDN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过npm安装"><span class="nav-number">1.2.</span> <span class="nav-text">通过npm安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、使用实例"><span class="nav-number">2.</span> <span class="nav-text">二、使用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#检测url是否正确"><span class="nav-number">2.1.</span> <span class="nav-text">检测url是否正确</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串替换"><span class="nav-number">2.2.</span> <span class="nav-text">字符串替换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、API及源码分析"><span class="nav-number">3.</span> <span class="nav-text">三、API及源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建一个正则对象"><span class="nav-number">3.1.</span> <span class="nav-text">新建一个正则对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造方法"><span class="nav-number">3.2.</span> <span class="nav-text">构造方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#add"><span class="nav-number">3.2.1.</span> <span class="nav-text">.add()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#startOfLine"><span class="nav-number">3.2.2.</span> <span class="nav-text">.startOfLine()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#endOfLine"><span class="nav-number">3.2.3.</span> <span class="nav-text">.endOfLine()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#then"><span class="nav-number">3.2.4.</span> <span class="nav-text">.then()</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kilieemy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/kilieemy/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/kilieemy/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/kilieemy/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/kilieemy/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/kilieemy/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/kilieemy/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/kilieemy/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/kilieemy/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/kilieemy/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/kilieemy/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/kilieemy/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/kilieemy/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kilieemy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
