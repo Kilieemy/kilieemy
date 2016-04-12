@@ -84,7 +84,7 @@ NexT.utils = NexT.$u = {
 
         // Add height for 163 music.
         if (this.src.search('music.163.com') > 0) {
-          videoRatio += 10;
+          videoRatio -= 12;
         }
 
         /*
