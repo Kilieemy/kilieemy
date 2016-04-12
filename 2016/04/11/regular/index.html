@@ -752,7 +752,7 @@
       item.addClass(activeTabClassName);
     });
 
-    $('.post-toc a').on('click', function (e) {
+    $('.post-toc a, .withinPage').on('click', function (e) {
       e.preventDefault();
       var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
       var offset = $(targetSelector).offset().top;
